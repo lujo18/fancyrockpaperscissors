@@ -18,51 +18,67 @@
             <button class="start-game">Begin</button>
         </div>
     </header>
-
-    <main id="game-page">
-        <div class="explosion-scaler">
-            <div id="explosion-cont">
-                <img src="" class="exp explosion" id="explosion-img">
-                <img src="" class="exp explosion-shadow" id="explosion-img">
+    <main id="game-cont">
+        <div id="game-page">
+            <div class="rules-cover">
+                <h1>First to 3 wins!</h1>
             </div>
-        </div>
-        <div class="ai-selector">
+            <div class="explosion-scaler">
+                <div id="explosion-cont">
+                    <img src="" class="exp explosion" id="explosion-img">
+                    <img src="" class="exp explosion-shadow" id="explosion-img">
+                </div>
+            </div>
+            <div class="score-text">
+                <div class="player-info">
+                    <h1 class="user-text">Player</h1>
+                    <p id="player-pick-display">"rock"</p>
+                </div>
+                <div class="scores">
+                    <h1><span id="score-cont"><span id="player-score">0</span></span> <span>-</span> <span id="score-cont"><span id="bot-score">0</span></span></h1>
+                </div>
+                <div class="bot-info">
+                    <h1 class="user-text">Bot</h1>
+                    <p id="bot-pick-display">"scissors"</p>
+                </div>
+            </div>
+            <div class="ai-selector">
+                
+                <div id="rock-icon" class="icon">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
             
-            <div id="rock-icon" class="icon">
-                <i class="fa-solid fa-gem"></i>
-            </div>
-        
-            <div id="paper-icon" class="icon">
-                <i class="fa-solid fa-toilet-paper"></i>
-            </div>
-        
-        
-            <div id="scissors-icon" class="icon">
-                <i class="fa-solid fa-scissors"></i>
-            </div> 
-        </div>
-        <div class="battle-area">
-    
-        </div>
-        <div class="player-selector">
+                <div id="paper-icon" class="icon">
+                    <i class="fa-solid fa-toilet-paper"></i>
+                </div>
             
-            <div id="rock-icon" class="icon">
-                <i class="fa-solid fa-gem"></i>
+            
+                <div id="scissors-icon" class="icon">
+                    <i class="fa-solid fa-scissors"></i>
+                </div> 
             </div>
+            <div class="battle-area">
         
-            <div id="paper-icon" class="icon">
-                <i class="fa-solid fa-toilet-paper"></i>
             </div>
-        
-        
-            <div id="scissors-icon" class="icon">
-                <i class="fa-solid fa-scissors"></i>
-            </div> 
+            <div class="player-selector">
+                
+                <div id="rock-icon" class="icon">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+            
+                <div id="paper-icon" class="icon">
+                    <i class="fa-solid fa-toilet-paper"></i>
+                </div>
+            
+            
+                <div id="scissors-icon" class="icon">
+                    <i class="fa-solid fa-scissors"></i>
+                </div> 
+            </div>
+
+
         </div>
-
-
     </main>
-
 
     <script src="script.js"></script>
 </body>
