@@ -5,6 +5,7 @@
     margin: 0;
     padding:0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
 }
 
 /* STYLE FOR ROCK PAPER OR SCISSORS SELECTION */
@@ -23,16 +24,30 @@ and (max-device-width : 480px)  { /* smartphones, portrait iPhone, portrait 480x
         justify-content: start;
     }
     #player-pick-display, #bot-pick-display {
-        top:4%;
-        
+        top:2rem;
+
     }
     
+}
+
+@media only screen and (min-width:481px) and (max-width: 1224px) {
+    :root {
+        --game-height:100vh;
+    }
+    #game-page {
+        height: 100vh;
+        scale: 1;
+    }
+    #player-pick-display, #bot-pick-display {
+        top:5%;
+
+    }
 }
 
 
 @media only screen and (min-width:1224px) {
     :root {
-        --game-height:500px;
+        --game-height:800px;
     }
     .player-info, .bot-info {
         justify-content: center;
@@ -41,7 +56,7 @@ and (max-device-width : 480px)  { /* smartphones, portrait iPhone, portrait 480x
         scale: .98;
     }
     #player-pick-display, #bot-pick-display {
-        bottom: 40%;
+        bottom: 38%;
         transform: translateY(-50%);
     }
 }
@@ -53,12 +68,13 @@ and (max-device-width : 480px)  { /* smartphones, portrait iPhone, portrait 480x
     --center-y:-50vh;
     --game-width:min(100vw, 1200px);
     --explosion-rotate:0;
-    --game-height:0;
 }   
 
 body {
     overflow: hidden;
     background: black;
+    height: 100vh;
+    width: 100%;
 }
 
 
@@ -119,11 +135,12 @@ button:hover {
 /* GAME CONTENT */
 
 #game-cont {
-    position: absolute;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%, -50%);
-    
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #game-page {
@@ -187,6 +204,7 @@ div.darken {
     align-items: center;
     top: calc(calc(50% + 2.5rem) - min(20vw, 100px));
     z-index: 1;
+    transform: translate(0);
 }
 
 #rock-icon {
@@ -244,14 +262,14 @@ div.darken {
 @keyframes join-battle {
     100% {
         left: 0%;
-        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), -300px);
+        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), calc(-1 * calc(var(--game-height) / 2.5)));
     }
 }
 
 @keyframes bot-battle {
     100% {
         left: 0%;
-        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), 400px);
+        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), calc(var(--game-height) / 2));
     }
 }
 
@@ -262,11 +280,11 @@ div.darken {
 @keyframes p-f-battle {
     from {
         left: 0;
-        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)),-300px);
+        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), calc(-1 * calc(var(--game-height) / 2.5)));
     }
     to {
         left: 0;
-        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)),-450px);
+        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), calc(-1 * calc(var(--game-height) / 2)));
     }
 }
 
@@ -277,11 +295,11 @@ div.darken {
 @keyframes b-f-battle {
     from {
         left: 0;
-        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)),400px);
+        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), calc(var(--game-height) / 2));
     }
     to {
         left: 0;
-        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)),500px);
+        transform: translate(calc(calc(calc(var(--game-width) - min(20vw, 100px)) - calc(var(--game-width) / 2)) + calc(min(20vw, 100px) / 2)), calc(var(--game-height) / 1.5));
     }
 }
 
@@ -545,7 +563,9 @@ div.darken {
 /* RESULT PAGE */
 
 #result-page {
+    overflow: hidden;
     position: absolute;
+    padding: 2rem;
     z-index: 20;
     width: 100%;
     height: 100vh;
@@ -570,5 +590,5 @@ div.darken {
 }
 
 #winner-subtext {
-    font-size: min(4vw, 80px);
+    text-wrap: wrap;
 }
