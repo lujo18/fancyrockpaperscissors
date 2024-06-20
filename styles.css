@@ -14,10 +14,10 @@
 and (min-device-width : 320px) 
 and (max-device-width : 480px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
     :root {
-        --game-height:100vh;
+        --game-height:calc(var(--vh, 1vh) * 100);
     }
     #game-page {
-        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         scale: 1;
     }
     .player-info, .bot-info {
@@ -32,10 +32,10 @@ and (max-device-width : 480px)  { /* smartphones, portrait iPhone, portrait 480x
 
 @media only screen and (min-width:481px) and (max-width: 1224px) {
     :root {
-        --game-height:100vh;
+        --game-height:calc(var(--vh, 1vh) * 100);
     }
     #game-page {
-        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         scale: 1;
     }
     #player-pick-display, #bot-pick-display {
@@ -136,7 +136,7 @@ button:hover {
 
 #game-cont {
 
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     display: flex;
     justify-content: center;
