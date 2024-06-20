@@ -29,6 +29,10 @@ let winningScore = 3;
 const psDisplay = document.querySelector("#player-score");
 const bsDisplay = document.querySelector("#bot-score");
 
+const body = document.querySelector("body");
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', '${vh}px');
+
 
 bsDisplay.addEventListener("animationend", function(e) {
     bsDisplay.classList.remove("animate-score")
