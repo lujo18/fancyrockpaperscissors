@@ -24,6 +24,8 @@ let playerPick = "";
 
 let playerScore = 0;
 let botScore = 0;
+
+let winningScore = 3;
 const psDisplay = document.querySelector("#player-score");
 const bsDisplay = document.querySelector("#bot-score");
 
@@ -85,6 +87,22 @@ function botPlay () {
 }
 
 
+const resultPage = document.querySelector("#result-page");
+const winnerText = resultPage.querySelector("#winner-text");
+const winnerSubtext = resultPage.querySelector("#winner-subtext");
+
+function showResults (theWinner) {
+    resultPage.classList.add("show");
+    if (theWinner == "player") {
+        winnerText.innerHTML = "You Win!";
+        winnerSubtext.innerHTML = "Keep up this momentum and play again!"
+    }
+    if (theWinner == "bot") {
+        winnerText.innerHTML = "You Lost..";
+        winnerSubtext.innerHTML = "You'll beat the bot next time!";
+    }
+}
+
 
 
 //pPk = playerPick, pIc = playerIcon, bPk = botPick, bIc = botIcon
@@ -123,6 +141,16 @@ function battle(pPk, pIc, bPk, bIc) {
         pIc.classList.remove("p-final-battle", "in-battle")
         console.log("Bot Classlist: " + bIc.classList)
         bIc.classList.remove("bot-in-battle", "b-final-battle")
+
+        if(playerScore >= winningScore) {
+            showResults("player");
+        }
+        if(botScore >= winningScore) {
+            showResults("bot")
+        }
+
+
+
     },1800)
 
     setTimeout(function () {
@@ -136,16 +164,28 @@ function battle(pPk, pIc, bPk, bIc) {
         biDisplay.classList.remove("bot-pick-display-slide-in");
         piDisplay.classList.remove("player-pick-display-slide-in");
         gamePage.classList.remove("active")
+        battling=false;
     }, 4000)
     
 }
 
+let battling = false;
 
 playerIcons.forEach(function(e) {
 
     const icon = e.querySelector("i");
     
+    e.addEventListener("mouseover", function () {
+        if (!battling) {
+            icon.classList.add("hovered");
+        }
+    })
+    e.addEventListener("mouseleave", function () {
+        icon.classList.remove("hovered");
+    })
+
     e.addEventListener("mousedown", function() {
+        battling = true;
         if(playerPick === "") {
             if (e.id === "rock-icon") {
                 playerPick = 0;
@@ -179,10 +219,32 @@ playerIcons.forEach(function(e) {
         }
     })
 
+    
    
 })
 
-rulesCover.classList.add("show");
-setTimeout(() => {
-    rulesCover.classList.remove("show");
-}, 1000);
+
+function startGame () {
+    playerScore = 0;
+    botScore = 0;
+    resultPage.classList.remove("show");
+    psDisplay.classList.add("animate-score")
+    bsDisplay.classList.add("animate-score")
+    setTimeout(function() {
+        psDisplay.innerHTML = playerScore;
+        bsDisplay.innerHTML = botScore;
+    },1500)
+}
+
+
+
+
+const startPage = document.querySelector("#start-page");
+
+function chooseDifficulty () {
+    startPage.style.transform = "translatey(100vh)"
+    rulesCover.classList.add("show");
+    setTimeout(() => {
+        rulesCover.classList.remove("show");
+    }, 2000);
+}

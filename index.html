@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Fancy Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="hand-back-fist-regular.svg">
     <script src="https://kit.fontawesome.com/45743c6752.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header id="start-page">
         <div class="text-cont">
             <h1>Rock Paper Scissors</h1>
-            <p>A battle awaits</p>
+            <p>A battle awaits . . .</p>
         </div>
         
         <div class="button-cont">
-            <button class="start-game">Begin</button>
+            <button class="start-game" onclick="chooseDifficulty()">Begin</button>
         </div>
     </header>
+
+    <div id="result-page">
+        <div class="text-cont">
+            <h1 id="winner-text">Rock Paper Scissors</h1>
+            <p id="winner-subtext">A battle awaits . . .</p>
+        </div>
+        <div class="button-cont">
+            <button class="start-game" onclick="startGame()">Replay</button>
+        </div>
+    </div>
+
     <main id="game-cont">
         <div id="game-page">
             <div class="rules-cover">
